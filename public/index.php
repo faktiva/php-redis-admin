@@ -18,7 +18,6 @@ function __autoload($class)
 }
 if (isset(App::instance()->config['timezone'])) {
     date_default_timezone_set(App::instance()->config['timezone']);
-
 }
 
 $authenticated = true;
@@ -35,8 +34,8 @@ if (isset(App::instance()->config['auth'])) {
         $password = $_SERVER['PHP_AUTH_PW'];
     // most other servers
     } elseif (isset($_SERVER['HTTP_AUTHORIZATION']) && strpos(strtolower($_SERVER['HTTP_AUTHORIZATION']), 'basic') === 0) {
-		list($username, $password) = explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
-	}
+        list($username, $password) = explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
+    }
 
     if ($username != $auth['username'] || !password_verify($password, $auth['password'])) {
         $authenticated = false;
