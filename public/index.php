@@ -44,7 +44,7 @@ if (isset(App::instance()->config['auth'])) {
 }
 
 if ($authenticated) {
-    $error = new Error();
+    $error = new PRA_Error();
     Router::instance()->route();
 } else {
     header('WWW-Authenticate: Basic realm="PHPRedis Administrator"');
