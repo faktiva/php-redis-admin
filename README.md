@@ -51,11 +51,23 @@ You can copy `app/config/config.dist.php`to `app/config/config.php` and edit as 
 
 require_once __DIR__.'/config.dist.php';
 
-/*
+$config = array_merge(
+    $config,
+    array(
+		/*
+		 * the following are your custom settings ...
+		 */
+        'debug' => true,
+        'auth' => null,
+        'log' => array(
+            'driver'    => 'file',
+            'threshold' => 5, /* 0: Disable Logging, 1: Error, 2: Warning, 3: Notice, 4: Info, 5: Debug */
+            'file'      => array('directory' => 'var/logs')
+        ),
+    )
+);
 
-... your customizations here
-
-*/
+return $config;
 
 ```
 
