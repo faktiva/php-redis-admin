@@ -6,10 +6,11 @@ ENV PHPREDIS_VERSION 2.2.8
 
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-	    cron \
-	    gearman-job-server \
-	    git-core \
-	    libgearman-dev \
+        cron \
+        gearman-job-server \
+        git-core \
+        libgearman-dev \
+        unzip \
     && rm -rf /var/lib/apt/lists/* \
     \
     && pecl install gearman \
@@ -30,5 +31,7 @@ COPY . php-redis-admin/
 RUN mkdir php-redis-admin/logs && chown -R www-data:www-data php-redis-admin/logs
 
 WORKDIR /var/www/html/php-redis-admin/web
+RUN php composer.phar install
 RUN chmod u+x /usr/src/start.sh
+
 CMD ["/usr/src/start.sh"]
