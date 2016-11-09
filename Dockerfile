@@ -2,6 +2,9 @@ FROM php:5.6-apache
 MAINTAINER albert@faktiva.com
 EXPOSE 80
 
+ENV PHPREDIS_VERSION 2.2.8
+
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	    cron \
 	    gearman-job-server \
@@ -11,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     \
     && pecl install gearman \
     && docker-php-ext-enable gearman \
-    && pecl install redis-2.2.8 \
+    && pecl install redis-$PHPREDIS_VERSION \
     && docker-php-ext-enable redis
 
 COPY docker/default.conf /etc/apache2/sites-available/000-default.conf
