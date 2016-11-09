@@ -30,8 +30,10 @@ WORKDIR /var/www/html
 COPY . php-redis-admin/
 RUN mkdir php-redis-admin/logs && chown -R www-data:www-data php-redis-admin/logs
 
-WORKDIR /var/www/html/php-redis-admin/web
+WORKDIR /var/www/html/php-redis-admin
 RUN php composer.phar install
+
+WORKDIR /var/www/html/php-redis-admin/web
 RUN chmod u+x /usr/src/start.sh
 
 CMD ["/usr/src/start.sh"]
