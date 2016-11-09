@@ -17,14 +17,12 @@ ____
 
 **A web interface to manage and monitor your Redis server(s).**
 
->
 >    For production use the **latest stable [release](https://github.com/faktiva/php-redis-admin/releases/latest)**
 >
 >    This is a maintained fork of [PHPRedMin](https://github.com/sasanrose/phpredmin).
 >    We are going to migrate to Symfony shortly.
 >
 >    _Note:_ PHP Redis Admin is mostly compatible with [phpredis](https://github.com/nicolasff/phpredis) redis module for PHP
->
 
 ## Installation
 
