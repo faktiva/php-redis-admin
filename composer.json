@@ -39,17 +39,17 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^1.12",
-        "symfony/var-dumper": "^2.8 || ^3.0",
-        "sensiolabs/security-checker": "^4.0"
+        "sensiolabs/security-checker": "^4.0",
+        "symfony/var-dumper": "^2.0 || ^3.0"
     },
     "require": {
+        "symfony/debug": "^2.0 || ^3.0",
         "php": ">=5.4.0",
-        "ext-redis": "*",
-        "symfony/debug": "^2.8 || ^3.0"
+        "ext-redis": "*"
     },
     "scripts": {
         "chk-cs": [
-            "bin/php-cs-fixer -vvv fix --dry-run"
+            "php bin/php-cs-fixer -vvv fix --dry-run"
         ],
         "chk-sec": [
             "php bin/security-checker -vv security:check"
@@ -59,7 +59,7 @@
             "@chk-sec"
         ],
         "fix-cs": [
-            "bin/php-cs-fixer -vvv fix"
+            "php bin/php-cs-fixer -vvv fix"
         ]
     },
     "autoload": {
