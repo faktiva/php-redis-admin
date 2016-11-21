@@ -48,17 +48,17 @@ final class Router
 
     protected function parse()
     {
-        $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->protocol = (
-            (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] && $_SERVER['HTTPS'] !== 'off')
-            || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
-        ) ? 'https' : 'http';
-        $this->host = $_SERVER['HTTP_HOST'];
-        $this->baseUrl = $this->protocol.'://'.$this->host;
-        $this->url = $this->baseUrl.$_SERVER['SCRIPT_NAME'];
-        $this->path = '';
-
         if (PHP_SAPI != 'cli') {
+            $this->method = $_SERVER['REQUEST_METHOD'];
+            $this->protocol = (
+                (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] && $_SERVER['HTTPS'] !== 'off')
+                || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+            ) ? 'https' : 'http';
+            $this->host = $_SERVER['HTTP_HOST'];
+            $this->baseUrl = $this->protocol.'://'.$this->host;
+            $this->url = $this->baseUrl.$_SERVER['SCRIPT_NAME'];
+            $this->path = '';
+
             $this->path = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['REQUEST_URI']);
 
             Log::factory()->write(Log::INFO, $_SERVER['REQUEST_URI'], 'Router');
