@@ -5,7 +5,7 @@ gearmand -d
 # Run cron daemon
 cron
 # Run gearman work
-php index.php gearman/index &
+php web/index.php gearman/index &
 # Start web server
 apache2-foreground &
 

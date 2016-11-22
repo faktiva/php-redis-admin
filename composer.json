@@ -2,7 +2,7 @@
     "name": "faktiva/php-redis-admin",
     "description": "PHP Redis Admin is a simple web interface to manage and monitor your Redis server(s).",
     "homepage": "https://github.com/faktiva/php-redis-admin",
-    "license": [ "CC-BY-SA-4.0", "BSD-3-Clause" ],
+    "license": "CC-BY-SA-4.0",
     "type": "project",
     "authors": [
         {
@@ -10,17 +10,15 @@
             "email": "albert@faktiva.com",
             "homepage": "http://faktiva.com",
             "role": "Developer"
-        },
-        {
-            "name": "Sasan Rose",
-            "email": "sasan.rose@gmail.com",
-            "homepage": "http://pioneermind.ir",
-            "role": "Developer"
         }
     ],
     "support": {
         "issues": "https://github.com/faktiva/php-redis-admin/issues",
-        "source": "https://github.com/faktiva/php-redis-admin/releases/latest"
+        "source": "https://github.com/faktiva/php-redis-admin/releases/latest",
+        "email": "support@faktiva.com"
+    },
+    "replace": {
+        "sasanrose/phpredmin": "*"
     },
 
     "minimum-stability": "stable",
@@ -34,13 +32,11 @@
             "php": "5.4"
         }
     },
-    "replace": {
-        "sasanrose/phpredmin": "*"
-    },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^1.12",
         "sensiolabs/security-checker": "^4.0",
-        "symfony/var-dumper": "^2.0 || ^3.0"
+        "symfony/var-dumper": "^2.0 || ^3.0",
+        "symfony/debug": "^2.8 || ^3.0"
     },
     "require": {
         "symfony/debug": "^2.0 || ^3.0",

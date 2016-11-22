@@ -57,10 +57,11 @@ class Controller
             $config['dbId'] = $dbs[0];
         }
 
-        $current['newDB'] = (!in_array($config['dbId'], $dbs) ? true : false);
+        $current['newDB'] = !in_array($config['dbId'], $dbs);
 
         $current['database'] = $config['dbId'];
 
+        $current['dbs'] = array();
         // Extract number of keys
         foreach ($dbs as $i) {
             if (preg_match('/^keys=([0-9]+),expires=([0-9]+)/', $info["db{$i}"], $matches)) {

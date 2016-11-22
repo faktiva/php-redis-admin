@@ -33,7 +33,7 @@ $config = array(
         'driver' => 'file',
         'threshold' => 2, /* 0: Disable Logging, 1: Error, 2: Warning, 3: Notice, 4: Info, 5: Debug */
         'file' => array(
-            'directory' => 'var/logs',
+            'directory' => 'var/log',
         ),
     ),
     'database' => array(

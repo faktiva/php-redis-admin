@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+    php-redis-admin:
+        build: .
+        image: faktiva/php-redis-admin
+        container_name: pra
+        environment:
+            - PHPREDMIN_DATABASE_REDIS_0_HOST=redis
+        ports:
+            - "8080:80"
+        networks:
+            - public
+            - backend
+        depends_on:
+            - redis
+    redis:
+        image: redis:alpine
+        container_name: pra-redis
+        networks:
+            - backend
+
+networks:
+    public:
+    backend:

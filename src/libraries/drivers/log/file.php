@@ -21,24 +21,25 @@
 
 class FileLog
 {
-    protected $_dir;
+    const LOGFILE_NAME = 'php-redis-admin.log';
+
+    protected $config_dir;
     protected $threshold;
 
     public function __construct()
     {
-        $config_dir = App::instance()->config['log']['file']['directory'];
-
         $this->threshold = App::instance()->config['log']['threshold'];
-
         if ($this->threshold > 0) {
-            if (!$config_dir) {
+            $this->config_dir = App::instance()->config['log']['file']['directory'];
+            if (!$this->config_dir) {
                 echo 'Please provide a log directory in your config file';
                 throw new ExitException();
             } else {
-                $this->_dir = $config_dir;
-
-                if (!is_writable($this->_dir)) {
-                    echo "{$this->_dir} does not exist or is not writable";
+                if ('/' != $this->config_dir{0}) {
+                    $this->config_dir = ROOT_DIR.DIRECTORY_SEPARATOR.$this->config_dir;
+                }
+                if (!is_writable($this->config_dir)) {
+                    echo "Log directory '{$this->config_dir}' does not exist or is not writable";
                     throw new ExitException();
                 }
             }
@@ -51,9 +52,8 @@ class FileLog
             return;
         }
 
-        $logfile = $this->_dir.'php-redis-admin.log';
-
-        if (($file = fopen($logfile, 'a+')) === false) {
+        $logfile = rtrim($this->config_dir, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.self::LOGFILE_NAME;
+        if (false === ($file = fopen($logfile, 'a+'))) {
             echo 'Can not open file: '.$logfile;
             throw new ExitException();
         }

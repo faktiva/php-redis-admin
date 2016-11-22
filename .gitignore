@@ -3,3 +3,6 @@ bin/
 .php_cs.cache
 var/logs/*
 app/config/config.php
+
+# keep ignored dirs having a placeholder
+!*/.gitkeep
