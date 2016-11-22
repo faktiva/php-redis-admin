@@ -10,7 +10,7 @@
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/faktiva/php-redis-admin.svg?style=flat)](http://isitmaintained.com/project/faktiva/php-redis-admin "Average time to resolve an issue")
 [![composer.lock](https://poser.pugx.org/faktiva/php-redis-admin/composerlock?style=flat)](https://packagist.org/packages/faktiva/php-redis-admin)
 [![Dependencies Status](https://img.shields.io/librariesio/github/faktiva/php-redis-admin.svg?maxAge=3600&style=flat)](https://libraries.io/github/faktiva/php-redis-admin)
-[![License](https://img.shields.io/packagist/l/faktiva/php-redis-admin.svg?style=flat)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![License](https://img.shields.io/packagist/l/faktiva/php-redis-admin.svg?style=flat)](https://tldrlegal.com/license/mit-license)
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/faktiva/php-redis-admin.svg)][hub]
 [![Docker Stars](https://img.shields.io/docker/stars/faktiva/php-redis-admin.svg)][hub]
@@ -29,7 +29,7 @@ ____
 >    This is a maintained fork of [PHPRedMin](https://github.com/sasanrose/phpredmin).
 >    We are going to migrate to Symfony shortly.
 >
->    _Note:_ PHP Redis Admin is mostly compatible with [phpredis](https://github.com/nicolasff/phpredis) redis module for PHP
+>    _Note:_ PHP Redis Admin is mostly compatible with [phpredis](https://github.com/phpredis/phpredis) redis module for PHP
 
 ## Installation
 
@@ -45,10 +45,10 @@ And then you can just easily point your broswer to [http://localhost:8080](http:
 **Note:**
 _You can use **ENV variables** to override any configuration directive of PHP Redis Admin._
 
-Moreover, you can just use **docker compose** to also setup a redis container:
+Moreover, you can just use **docker compose** to also setup a redis container using the provided `docker-compose.yml` as a startpoint:
 
 ```Shell
-docker-compose -f docker/docker-compose.yml up -d
+docker-compose up -d
 ```
 
 ### Manual installation
