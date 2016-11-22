@@ -60,7 +60,7 @@ $config = array(
         ),
     ),
     'session' => array(
-        'name' => 'php-redis-admin-session',
+        'name' => 'PRASESSION',
     ),
     'gearman' => array(
         'host' => '127.0.0.1',
