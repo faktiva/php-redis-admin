@@ -19,19 +19,33 @@
  * @source   https://github.com/faktiva/php-redis-admin
  */
 
+
+// Gets an env var, with fallback to default
+function envDef($envName, $defaultVal = null) {
+
+  $env = getenv($envName);
+
+  if($env !== null) {
+    return $env;
+  }
+
+  return $defaultVal;
+
+}
+
 $config = array(
     'default_controller' => 'Welcome',
     'default_action' => 'Index',
-    'debug' => false,
+    'debug' => (bool) (envDef('DEBUG', false)),
     'default_layout' => 'layout',
     'timezone' => 'Europe/Rome',
     'auth' => array(
-        'username' => 'admin',
-        'password' => password_hash('admin', PASSWORD_DEFAULT),
+        'username' => envDef('LOGIN_USER', 'admin'),
+        'password' => password_hash(envDef('LOGIN_PASS', 'admin'), PASSWORD_DEFAULT),
     ),
     'log' => array(
         'driver' => 'file',
-        'threshold' => 2, /* 0: Disable Logging, 1: Error, 2: Warning, 3: Notice, 4: Info, 5: Debug */
+        'threshold' => envDef('LOG_LEVEL', 2), /* 0: Disable Logging, 1: Error, 2: Warning, 3: Notice, 4: Info, 5: Debug */
         'file' => array(
             'directory' => 'var/log',
         ),
@@ -39,17 +53,17 @@ $config = array(
     'database' => array(
         'driver' => 'redis',
         'mysql' => array(
-            'host' => 'localhost',
-            'username' => 'root',
-            'password' => 'root',
+            'host' => envDef('MYSQL_HOST', 'localhost'),
+            'username' => envDef('MYSQL_USERNAME', 'root'),
+            'password' => envDef('MYSQL_PASSWORD', 'root'),
         ),
         'redis' => array(
             array(
-                'host' => 'localhost',
-                'port' => '6379',
-                'password' => null,
-                'database' => 0,
-                'max_databases' => 16, /* Manual configuration of max databases for Redis < 2.6 */
+                'host' => envDef('REDIS_HOST', 'localhost'),
+                'port' => envDef('REDIS_PORT', '6379'),
+                'password' => envDef('REDIS_PASSWORD', null),
+                'database' => envDef('REDIS_DATABASE', 0),
+                'max_databases' => getenv('REDIS_MAX_DATABASE', 16), /* Manual configuration of max databases for Redis < 2.6 */
                 'stats' => array(
                     'enable' => 1,
                     'database' => 0,
